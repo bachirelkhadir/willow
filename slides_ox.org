@@ -1,0 +1,143 @@
+#+TITLE:  Piecewise-Linear Motion Planning amidst Static, Moving, or Morphing Obstacles.
+#+OPTIONS:  num:nil toc:nil
+#+PROPERTY: reveal_background #654321
+#+DATE: 11.10.2016
+#+AUTHOR: Bachir El Khadir (Joint work with ...)
+#+EMAIL: bachir@ibm.com
+#+REVEAL_INIT_OPTIONS: width:1280, height:720, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'none', history: 'true'
+#+COLUMNS: %75ITEM %CUSTOM_ID
+
+
+* Problem formulation
+:PROPERTIES:
+:CUSTOM_ID: problem-formulation
+:END:
+
+** Animation with close up camera
+:PROPERTIES:
+:CUSTOM_ID: first-anim
+:END:
+
+** What is a polynomial
+:PROPERTIES:
+:CUSTOM_ID: h:965e8b51-0a5a-4d4e-9f04-ac0a8a87cd65
+:END:
+
+$p(x) = p(x_1, \ldots, x_n) = \sum_{\alpha = (\alpha_1, \ldots, \alpha_n)} x_1^{\alpha_1} \ldots x_n ^{\alpha_n}$
+
+underbrace $x^{\alpha}$.
+
+** Power of polynomials
+:PROPERTIES:
+:CUSTOM_ID: power-poly
+:END:
+
+- Polyhedrons
+- Familiar shapes
+- Universality
+  + drawback, degree might be high
+  + Rough approximation with spheres
+
+** Existing methods
+:PROPERTIES:
+:CUSTOM_ID: existing-methods
+:END:
+    - Upper bounds:
+      - Sampling based technique (RRT)
+      - Local optimization
+
+    - Lower bounds:
+      + Quantifier elimination
+      + CAD
+
+    - What we are looking for: Rigorous bounds, Optimality certificates, safety concerns
+
+
+* Interlude: Moment optimization
+:PROPERTIES:
+:CUSTOM_ID: h:4de42e66-520c-40cf-a573-51cadee7f8e4
+:END:
+** Lift to world of distributions
+:PROPERTIES:
+:CUSTOM_ID: h:6b59eefd-e116-4283-a2c5-289f175685e7
+:END:
+\[x \longrightarrow \mu\]
+\[p(x) \longrightarrow \mathbb E_{x \sim \mu}[p(x)]\]
+\[g(x) \ge 0 \longrightarrow \mathbb E_{x \sim \mu}[g(x) f^2(x) ] \forall f \in \mathbb R[x] \]
+
+$E_{x \sim \mu}[p(x)] = \int p(x) d\mu$
+
+From nonconvex to inf dimensional+linear
+
+**  Two crucial observations
+:PROPERTIES:
+:CUSTOM_ID: h:06496a3a-ad04-4997-a0c9-c7964bddb1db
+:END:
+- We actually do not need $\mu$, we only need $E_\mu[p(x)]$.
+
+- When $p$ is a polynomial,
+$p(x) = \sum p_{\alpha} x^\alpha$
+
+$E_\mu[p(x)] = \sum p_{\alpha} E_\mu[x^{\alpha}]$.
+
+*Idea:* Optimize over the first moments of $\mu$.
+
+** SDPs
+:PROPERTIES:
+:CUSTOM_ID: h:7c096a85-c9d4-4ebc-b380-fc5c42b7de27
+:END:
+Cone intersect plane
+** Time-varying setting
+:PROPERTIES:
+:CUSTOM_ID: h:6982d707-3558-4bc3-a02a-8372dac19a48
+:END:
+Studden
+
+* Back to the path planning problem
+:PROPERTIES:
+:CUSTOM_ID: h:f165c5be-a0b5-4bcd-ad27-751e4a0bfdd4
+:END:
+
+** Parameterize the path
+:PROPERTIES:
+:CUSTOM_ID: h:41bbed05-13c4-4164-88f6-2c1ef423763f
+:END:
+- Most natural: polynomial, but high degree
+- Piecewise polynomial, even linear
+  + Universal approximators, regularization effect
+
+** Rigorous approach
+:PROPERTIES:
+:CUSTOM_ID: h:fa061ba4-e86a-4543-91ad-41334928b58e
+:END:
+- Lower bounds
+- Asymptotically tight
+- Rank constraint
+
+** Heuristic
+:PROPERTIES:
+:CUSTOM_ID: h:0613d435-9a56-4019-b61d-dd0c3fa3aa87
+:END:
+
+* Numerical Experiments
+:PROPERTIES:
+:CUSTOM_ID: h:57963d36-33b8-4a29-94a2-946f1edb1a6d
+:END:
+** Julia Code
+:PROPERTIES:
+:CUSTOM_ID: h:3a7ce353-ef43-4fe1-bd6b-3a65ba70476f
+:END:
+** Box
+:PROPERTIES:
+:CUSTOM_ID: h:8c631ab3-8bbf-474b-90a2-e10e7a4e6efb
+:END:
+** Arm collaboration
+:PROPERTIES:
+:CUSTOM_ID: h:64462240-264f-458e-ac72-cdc2e70066ef
+:END:
+
+
+# Local variables:
+# eval: (my-buffer-local-set-key (kbd "C-c C-a") (lambda () (interactive) (save-buffer) (org-reveal-export-to-html)))
+# after-save-hook:  eos/org-add-ids-to-headlines-in-file
+# end:
