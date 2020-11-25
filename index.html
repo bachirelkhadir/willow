@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Piecewise-Linear Motion Planning amidst Static, Moving, or Morphing Obstacles.</title>
+<meta name="author" content="Bachir El Khadir"/>
+<link rel="stylesheet" href="./reveal.js/dist/reveal.css"/>
+<link rel="stylesheet" href="./reveal.js/dist/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="css/style.css"
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section data-external="includes/trailer.html">Front Page HERE</section>
+<section data-external="includes/front_page.html">Front Page HERE</section>
+<section data-external="includes/videos.html">Videos here</section>
+<section data-external="includes/thank_you.html">Thank you</section>
+</div>
+</div>
+</div>
+<script src="./reveal.js/dist/reveal.js"></script>
+<script src="./reveal.js/plugin/markdown/markdown.js"></script>
+<script src="./reveal.js/plugin/zoom/zoom.js"></script>
+<script src="./reveal.js/plugin/notes/notes.js"></script>
+<script src="./reveal.js/plugin/math/math.js"></script>
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        plugins: [RevealMarkdown,RevealZoom,RevealNotes],
+        width:1280,
+        height:720,
+        margin: 0.1,
+        minScale:0.2,
+        maxScale:2.5,
+        transition:'none',
+        backgroundTransition: 'none',
+
+        slideNumber: slide => {
+            var curr_slide = Reveal.getSlidePastCount( slide );
+            var num_slides = Reveal.getTotalSlides();
+            var frac = curr_slide / num_slides;
+            // // make page cout go faster at begining
+            // frac = Math.sqrt(frac);
+            // Ignore numbering of vertical slides
+            return [ Math.round(frac * 100) + '%' ];
+        },
+        multiplex: {
+            secret: '', // null if client
+            id: '', // id, obtained from socket.io server
+            url: '' // Location of socket.io server
+        },
+        math: {
+            mathjax: 'reveal.js/plugin/MathJax-2.7.7/MathJax.js',
+            config: 'TeX-AMS_HTML-full',
+            TeX: { Macros: { R: "{\\mathbb R}"} }
+        },
+        plugins: [ RevealMath ],
+        dependencies: [
+            { 
+                src: 'reveal.js/plugin/external/external.js', 
+                condition: function() { 
+                    return !!document.querySelector( '[data-external],[data-external-replace]' ); 
+                }},
+        ], 
+        history: true,
+        navigationMode: 'linear',
+    });
+</script>
+</body>
+</html>
