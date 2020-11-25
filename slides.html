@@ -26,7 +26,7 @@
 <section data-external="includes/trailer.html">Front Page HERE</section>
 <section data-external="includes/front_page.html">Front Page HERE</section>
 <section data-external="includes/videos.html">Videos here</section>
-<section data-external="includes/thankyou.html">Thank you</section>
+<section data-external="includes/thank_you.html">Thank you</section>
 </div>
 </div>
 </div>
@@ -47,6 +47,16 @@
         maxScale:2.5,
         transition:'none',
         backgroundTransition: 'none',
+
+        slideNumber: slide => {
+            var curr_slide = Reveal.getSlidePastCount( slide );
+            var num_slides = Reveal.getTotalSlides();
+            var frac = curr_slide / num_slides;
+            // // make page cout go faster at begining
+            // frac = Math.sqrt(frac);
+            // Ignore numbering of vertical slides
+            return [ Math.round(frac * 100) + '%' ];
+        },
         multiplex: {
             secret: '', // null if client
             id: '', // id, obtained from socket.io server
