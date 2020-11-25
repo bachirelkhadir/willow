@@ -305,14 +305,23 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 h3.author {
     color:#a7e22e;
-    font-family: Roboto, Helvetica, Arial, serif;
+    font-family: monospace;
     background-color: #1c2f3f;
     margin-top: 100px;
-    margin-bottom: 50px;
-    font-size: .7em;
+    /* margin-bottom: 20px; */
     text-transform: none;
 }
 
+
+h3.coauthors {
+    color:#a7e22e;
+    font-family: monospace;
+    background-color: #1c2f3f;
+    /* margin-top: 100px; */
+    margin-bottom: 50px;
+    font-size: .5em;
+    text-transform: none;
+}
 
 /* .reveal  .talktitle { */
 /*     display: block; */
@@ -339,10 +348,10 @@ h3.author {
 
 .reveal h3.institution {
     /* font-family: "Lucida Console", Courier, monospace; */
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-family: monospace;
     padding: 0px;
     margin: 0px;
-    font-size: .5em;
+    font-size: .8em;
 }
 
 .reveal img.logo {

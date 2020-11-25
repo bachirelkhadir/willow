@@ -15,7 +15,7 @@ hq:
 
 	INPUT_PATH=. \
 	OUTPUT_PATH=. \
-	docker-compose run manim scripts/latex_scenes.py RigorousApproach -qm -c=#1f303e  | tee anim.log
+	docker-compose run manim scripts/piecewise.py Piecewise -qm -c=#1f303e  | tee anim.log
 	sed  's/\r$$//' anim.log > anim.log2
 
 play:

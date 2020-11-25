@@ -68,7 +68,7 @@
       \[\{\color{pink}y \in \mathbb R^n \; | \;
       \color{yellow}g_1(\color{pink}y) \ge 0,
       \cdots,
-      \color{yellow}g_1(\color{pink}y) \ge 0\}\]
+      \color{yellow}g_m(\color{pink}y) \ge 0\}\]
 </div>
     </div>
     <div class="col">
@@ -139,7 +139,7 @@
 </section>
 
 <section>
-  <h3>Detour: Moment Optimization</h3>
+  <h3>(Small) Detour: Moment Optimization</h3>
 </section>
 <section>
 \[ \min_{\color{pink}y \in \mathbb R^n} \color{yellow}p(\color{pink}y)\]
@@ -152,6 +152,7 @@ $\color{yellow}g(\color{pink}y) \ge 0.$
 <style>
 table, tr, th, td {
     border: none;
+    font-size: 1em;
 }
 
 table#moment {
@@ -162,19 +163,52 @@ table#moment td {
 }
 </style>
 
-<table id="moment">
+<table id="moment" style="position:fixed;left:-150px;">
   <tr>
     <td class="fragment">$\color{pink}y \in \mathbb R^n$</td><td class="fragment">$\longrightarrow$</td><td class="fragment">$ \color{#BBF8ED}\mu$ distribution over $\color{pink} y$</td>
   </tr>
   <tr>
-    <td class="fragment">$\color{yellow}p(\color{pink}y) $</td><td class="fragment">$\longrightarrow$</td><td class="fragment">$ \mathbb E_{\color{pink}y \sim \color{#BBF8ED}\mu}[p(\color{pink}y)]$</td>
+    <td class="fragment">$\color{yellow}p(\color{pink}y) $</td><td class="fragment">$\longrightarrow$</td><td class="fragment">$ \mathbb E_{\color{pink}y \sim \color{#BBF8ED}\mu}[\color{yellow}p(\color{pink}y)]$</td>
   </tr>
   <tr>
-    <td class="fragment">$\color{yellwo}g(\color{pink}y) \ge 0 $</td><td class="fragment">$\longrightarrow$</td><td class="fragment">$ \mathbb E_{\color{pink}y \sim \color{#BBF8ED}\mu}[g(\color{pink}y) f^2(\color{pink}y) ] \quad \forall f \in \mathbb R[\color{pink}y]$</td>
+    <td class="fragment">$\color{yellow}g(\color{pink}y) \ge 0 $</td><td class="fragment">$\longrightarrow$</td><td class="fragment">$ \mathbb E_{\color{pink}y \sim \color{#BBF8ED}\mu}[\color{yellow}g(\color{pink}y) f^2(\color{pink}y) ] \ge 0\;\forall f \in \mathbb R[\color{pink}y]$</td>
   </tr>
 </table>
 
-<div class="fragment">$E_{\color{pink}y \sim \color{#BBF8ED}\mu}[\color{yellow}p(\color{pink}y)] = \sum_{\alpha} \color{yellow} p_{\alpha} \mathbb E \color{pink} y^{\alpha}$</div>
+<div class="fragment" style="font-size:20px;position:fixed; bottom:-10px;left:200px;">\[\left(E_{\color{pink}y \sim \color{#BBF8ED}\mu}[\color{yellow}p(\color{pink}y)] = \sum_{\alpha} \color{yellow} p_{\alpha} \mathbb E_{\color{#BBF8ED}\mu} [\color{pink} y^{\alpha}]\right)\]</div>
+
+
+<!-- Third column -->
+
+<div class="fragment" style="position:absolute;top:330px;left:850px;">$\longrightarrow \{\color{#BBF8ED} \mu_\alpha = \mathbb E_{\color{#BBF8ED}\mu} [\color{pink} y^{\alpha}], \; \alpha \in N\}$</div>
+
+
+<div class="fragment" style="position:absolute;top:400px;left:850px;">$\longrightarrow \sum_{\alpha} \color{yellow}p_{\alpha}\color{#BBF8ED} \mu_\alpha$</div>
+
+<div class="fragment" style="position:absolute;top:475px;left:850px;">$\longrightarrow \operatorname{def}(f) \le r$</div>
+
+<!--  Draw rect -->
+<div class="fragment">
+<canvas id="myCanvas" width="430" height="240" style="position:fixed; left: 900px;top:400px;border:5px dashed yellow;"> </canvas>
+
+<div class="fragment" style="font-size:30px;position:fixed; bottom:30px;left:900px;">- For any $r$, this is an SDP</div>
+
+<div class="fragment" style="font-size:30px;position:fixed; bottom:-15px;left:900px;">- Tight as $r \rightarrow \infty$</div>
+</div>
+</section>
+
+<section>What is Semidefinite Programming?</section>
+<section data-background-video="videos/sdp_explanation-part1.mp4"></section>
+<section data-background-video="videos/sdp_explanation-part2.mp4"></section>
+<section data-background-video="videos/sdp_explanation-part3.mp4"></section>
+<section data-background-video="videos/sdp_explanation-part4.mp4"></section>
+<section data-background-video="videos/sdp_explanation-part5.mp4"></section>
+<section data-background-video="videos/sdp_explanation-part6.mp4"></section>
+
+</section>
+
+<section>
+  <h3>End of Detour: Back to Motion Planning</h3>
 </section>
 
 <!-- Piecewise linear path -->
@@ -198,21 +232,41 @@ table#moment td {
 <!-- <section data-background-video="videos/piece-part0.mp4"></section> -->
 <section data-background-video="videos/piece-part0.mp4">
 
-<div style="position:fixed; font-size:1.9vw;">
+<div style="position:fixed;left:-90px;font-size:1.9ew;">
 \[ [0, T] = \left[0, \frac Ts\right] \cup \left[\frac Ts, 2 \frac Ts\right] \cup \ldots \]
 
 </div>
 </section>
-<section data-background-video="videos/piece-part1.mp4"></section>
-<section data-background-video="videos/piece-part2.mp4"></section>
-<section data-background-video="videos/piece-part3.mp4"></section>
-<section data-background-video="videos/piece-part4.mp4"></section>
-<section data-background-video="videos/piece-part5.mp4"></section>
-<section data-background-video="videos/piece-part6.mp4"></section>
-<section data-background-video="videos/piece-part7.mp4"></section>
+<section data-background-video="videos/Piecewise-part1.mp4"></section>
+<section data-background-video="videos/Piecewise-part2.mp4"></section>
+<section data-background-video="videos/Piecewise-part3.mp4"></section>
+<section data-background-video="videos/Piecewise-part4.mp4"></section>
+<section data-background-video="videos/Piecewise-part5.mp4"></section>
+<section data-background-video="videos/Piecewise-part6.mp4"></section>
+<!-- This is An SDP! -->
+<section data-background-video="videos/Piecewise-part7.mp4"></section>
+
+<!-- Dett & Studden -->
+<section style="font-size:.8em;">
+
+<h3>How can we impose</h3>
+\[X(t) = \begin{pmatrix}
+X_{11}(t) & \ldots & X_{1n}(t)\\
+\vdots &  & \vdots\\
+X_{1n}(t) & \ldots & X_{nn}(t)\\
+\end{pmatrix} \succeq 0\]
+<h3>for all $t \in [0, T]$?</h3>
+
+<ul>
+  <li class="fragment"> Discretize time
+  <li class="fragment"> Dette & Studden (2002)
+
+    <span class="fragment">\[X(t) \succeq 0 \quad \forall t \in [0, T] \text{ if and only if }\]</span>
+    <span class="fragment">\[\exists \color{yellow}A, \color{pink}B, \color{#BBF8ED}C \quad  X(t) = t \color{yellow}{A(t)^TA(t)} + (T - t) \color{pink}{B(t)^TB(t)} + t (T-t) \color{#BBF8ED}{C(t)^TC(t)}\]</span>
+</ul>
+</section>
 
 <!-- <section data-background-image="videos/piece_wise_path.png"></section> -->
-
 <section data-background-video="videos/path-part11.mp4"></section>
 <section data-background-video="videos/path-part12.mp4"></section>
 <section data-background-video="videos/path-part13.mp4"></section>
@@ -221,14 +275,45 @@ table#moment td {
 <section data-background-video="videos/path-part16.mp4"></section>
 <section data-background-video="videos/path-part17.mp4"></section>
 <section data-background-video="videos/path-part18.mp4"></section>
-<!-- Table benchmark -->
-<!-- <section data-background-video="videos/path-part19.mp4"></section> -->
+
+
+<section style="font-size:.8em;">
+<h3>MMP: Main Idea</h3>
+<div>
+Suppose the "pseudo-moments" $\mu_{\alpha}$ returned by our SDP at some level $r$ satisfy
+
+\[E_{\mu}[u_i^2] = (E_{\mu}[u_i])^2\]
+\[E_{\mu}[v_i^2] = (E_{\mu}[v_i])^2\]
+
+Then, $\mu$ is a geniune distribution.</div>
+
+<div>Idea: Let's "push" our solution towards satisfying (*)</div>
+
+<div>First attempt: add $\lambda(u_1, v_1, \ldots) := \sum_{i}
+E_{\mu}[u_i^2] - (E_{\mu}[u_i])^2 +
+E_{\mu}[v_i^2] - (E_{\mu}[v_i])^2$ to our objective.</div>
+</section>
+
+<section>
+ <p>More refined approach:</p>
+
+  <ul>
+    <li>Linearize $\lambda$ around some random point.
+    <li>Solve the corresponding problem
+    <li>Iterate
+  </ul>
+</section>
+
+<section>Let's See Numerical Examples!</section>
+<!-- CUBE -->
 <section data-background-video="videos/path-part20.mp4"></section>
 <section data-background-video="videos/path-part21.mp4"></section>
 <section data-background-video="videos/path-part22.mp4"></section>
 <section data-background-video="videos/path-part23.mp4"></section>
 <section data-background-video="videos/path-part24.mp4"></section>
 <section data-background-video="videos/path-part25.mp4"></section>
+<!-- Table benchmark -->
+<section data-background-video="videos/path-part19.mp4"></section>
 <section data-background-video="videos/path-part26.mp4"></section>
 <section data-background-video="videos/path-part27.mp4"></section>
 <section data-background-video="videos/path-part27.mp4"></section>
