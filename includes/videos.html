@@ -8,23 +8,177 @@
 
 <section style="text-align: left; padding:10px;">
   More formally,
-<p class="fragment">  \[x: [0, T] \longrightarrow \mathbb R^n\]</p>
+<p class="fragment">  \[\color{pink}x: [0, T] \longrightarrow \mathbb R^n\]</p>
 <p class="fragment">
   \[
   \begin{align*}
-\min& \int_0^T \| \dot x(t) \| \; {\rm d}t\\
-  &x(0) = x_0, \quad x(T) = x_T\\
-  &g_k(t, x(t)) \ge 0 \quad \forall t \in [0, T], \; k = 1,\ldots, m.
+\min& \int_0^T \| \color{pink}{\dot x}(t) \| \; {\rm d}t\\
+  &\color{pink}x(0) = x_0, \quad \color{pink}x(T) = x_T\\
+  &\color{yellow}{g_k}(t, \color{pink}x(t)) \ge 0 \quad \forall t \in [0, T], \; k = 1,\ldots, m.
   \end{align*}
   \]
   </p>
 </section>
-<section data-background-video="videos/path-part7.mp4">
 
-<!-- <p style="position:absolute" >  \[x: [0, T] \ \mathbb R^n\]</p> -->
+
+
+<section>
+  <h3>Polynomial functions</h3>
+
+<div style="position:absolute;left:200px;">\[\color{yellow}g(\color{pink}y)\]</div>
+<div class="fragment" style="position:absolute;left:300px;"> \[:= \color{yellow}g(\color{pink}{y_1}, \ldots, \color{pink}{y_n})\]</div>
+
+<div class="fragment" style="position:absolute;top:200px;left:320px;">\[= \sum_{\alpha = (\alpha_1, \ldots, \alpha_n) \in \mathbb N^n} \quad \color{yellow}{g_{\alpha}} \quad \color{pink}{y_1}^{\alpha_1} \ldots \color{pink}{y_n}^{\alpha_n}\]</div>
+
+
+<div class="fragment" style="position:absolute;top:220px;left:800px;">\[ \underbrace{\quad\quad\quad\quad\quad\quad}_{\Large \color{pink}y^\alpha}\]</div>
 </section>
 
 
+
+<style>
+  img.polytope {
+      position: absolute;
+      left: 700px; 
+      /* width: 4000px; */
+      min-height: 500px;
+  }
+
+  img.sphere {
+      position: absolute;
+      left: 900px; 
+      /* width: 4000px; */
+      /* min-height: 500px; */
+  }
+.container{
+    display: flex;
+}
+.col{
+    flex: 1;
+}
+
+</style>
+<section>
+  <h3>Power of polynomial functions</h3>
+  <div class = "container">
+    <div class="col">
+      What sets can be described as
+      \[\large \{\color{pink}y \in \mathbb R^n \; | \; \color{yellow}g(\color{pink}y) \ge 0 \}?\]
+<div class="fragment" data-fragment-index="4">
+      \[\{\color{pink}y \in \mathbb R^n \; | \;
+      \color{yellow}g_1(\color{pink}y) \ge 0,
+      \cdots,
+      \color{yellow}g_1(\color{pink}y) \ge 0\}\]
+</div>
+    </div>
+    <div class="col">
+    <span class="fragment" data-fragment-index="2"><img class="sphere fragment fade-out" data-fragment-index="3" src="imgs/sphere.svg" /></span>
+    <span class="fragment" data-fragment-index="3"><img class="sphere fragment fade-out" data-fragment-index="4"
+                                                        src="imgs/one_level_set.png" /></span>
+
+      <div>
+        <span class="fragment" data-fragment-index="1"><img class="polytope fragment fade-out" data-fragment-index="2" src="imgs/polytope/polytope0000.png" /></span>
+
+        <img class="polytope fragment" data-fragment-index="5" src="imgs/polytope/polytope0000.png" />
+        <img class="polytope fragment" src="imgs/polytope/polytope0020.png" />
+        <img class="polytope fragment" src="imgs/polytope/polytope0040.png" />
+        <img class="polytope fragment" src="imgs/polytope/polytope0060.png" />
+        <img class="polytope fragment" src="imgs/polytope/polytope0080.png" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <style> -->
+<!--   h3.existingmethods { -->
+<!--       position: absolute; -->
+<!--       top: -400px; -->
+<!--   } -->
+<!-- </style> -->
+<!-- <section> -->
+<!--   <h3 class="existingmethods">Existing Methods for Path Planning</h3> -->
+<!-- </section> -->
+
+<section><h3>State of the Art</h3> </section>
+
+<section data-background-video="videos/RigorousApproach-part0.mp4">
+</section>
+
+
+<section data-background="videos/RigorousApproach-part0.png">
+  <div class="fragment" style="position:fixed;right: 320px;top:320px;">$\Huge\le$</div>
+  <div class="fragment" style="position:fixed;right:20px;top:20px;font-size:30px;">Upper bounds<br/>typically: feasible paths</div>
+  <div class="fragment">
+    <div class="fragment fade-out" style="position:fixed;right:-100px;top:200px;">
+      <video   width=400 data-autoplay><source src="videos/youtubedl/rrt_cropped.mp4" type="video/mp4"></video>
+      <div style="font-size:30px">RRT</div>
+    </div>
+  </div>
+
+  <div class="fragment">
+    <div class="fragment fade-out" style="position:fixed;right:-100px;top:200px;">
+      <video  width=400 data-autoplay><source src="videos/youtubedl/gd.mp4" type="video/mp4"></video>
+      <div style="font-size:30px">Local search</div>
+    </div>
+  </div>
+
+
+  <div class="fragment" style="position:fixed;left:400px;top:550px;">
+    $\Huge \shortparallel$ <br/>
+    Exact methods <br/>
+    <div style="font-size:30px">
+    <span class="fragment" >Computation Algebraic Geometry</span><br/>
+    <span class="fragment">(Expensive)</span>
+    </div>
+  </div>
+
+  <div class="fragment" style="position:fixed;left:320px;top:320px;">$\Huge \le$</div>
+
+  <div class="fragment" style="position:fixed;left:20px;top:320px;font-size:40px;">Lower bounds?
+</div>
+</section>
+
+<section>
+  <h3>Detour: Moment Optimization</h3>
+</section>
+<section>
+\[ \min_{\color{pink}y \in \mathbb R^n} \color{yellow}p(\color{pink}y)\]
+<div class="fragment">
+  s.t.
+$\color{yellow}g(\color{pink}y) \ge 0.$
+</div>
+
+
+<style>
+table, tr, th, td {
+    border: none;
+}
+
+table#moment {
+    margin: 100px; 
+}
+table#moment td {
+    border: none;
+}
+</style>
+
+<table id="moment">
+  <tr>
+    <td class="fragment">$\color{pink}y \in \mathbb R^n$</td><td class="fragment">$\longrightarrow$</td><td class="fragment">$ \color{#BBF8ED}\mu$ distribution over $\color{pink} y$</td>
+  </tr>
+  <tr>
+    <td class="fragment">$\color{yellow}p(\color{pink}y) $</td><td class="fragment">$\longrightarrow$</td><td class="fragment">$ \mathbb E_{\color{pink}y \sim \color{#BBF8ED}\mu}[p(\color{pink}y)]$</td>
+  </tr>
+  <tr>
+    <td class="fragment">$\color{yellwo}g(\color{pink}y) \ge 0 $</td><td class="fragment">$\longrightarrow$</td><td class="fragment">$ \mathbb E_{\color{pink}y \sim \color{#BBF8ED}\mu}[g(\color{pink}y) f^2(\color{pink}y) ] \quad \forall f \in \mathbb R[\color{pink}y]$</td>
+  </tr>
+</table>
+
+<div class="fragment">$E_{\color{pink}y \sim \color{#BBF8ED}\mu}[\color{yellow}p(\color{pink}y)] = \sum_{\alpha} \color{yellow} p_{\alpha} \mathbb E \color{pink} y^{\alpha}$</div>
+</section>
+
+<!-- Piecewise linear path -->
+<section data-background-video="videos/path-part7.mp4"> </section>
 <!-- Path becomes piece wise -->
 <section data-background-video="videos/path-part8.mp4">
 <div style="position:absolute;">Piecewise Linear Paths

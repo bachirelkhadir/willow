@@ -1,4 +1,6 @@
 #+TITLE:  Piecewise-Linear Motion Planning amidst Static, Moving, or Morphing Obstacles.
+
+#+STARTUP: latexpreview
 #+OPTIONS:  num:nil toc:nil
 #+PROPERTY: reveal_background #654321
 #+DATE: 11.10.2016
