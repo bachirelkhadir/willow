@@ -296,20 +296,24 @@ Then, $\color{pink}\mu$ is a geniune distribution.</div>
 <div class="fragment"><b>Idea</b>: Let's "push" our solution to satisfy this condition.
 <br>
 <br>
-<div class="fragment">First attempt: add \[\color{yellow}\lambda(u_1, v_1, \ldots) := \sum_{i}
+<div class="fragment">First attempt: add \[\color{yellow}\lambda(\{\color{pink}\mu_{\alpha}\}_\alpha) := \sum_{i}
 E_{\color{pink}\mu}[u_i^2] - (E_{\color{pink}\mu}[u_i])^2 +
 E_{\color{pink}\mu}[v_i^2] - (E_{\color{pink}\mu}[v_i])^2\] to our objective.</div>
 
 </section>
 
 <section style="text-align:left;font-size:.8em;">
+\[\color{yellow}\lambda(\{\color{pink}\mu_{\alpha}\}_\alpha) := \sum_{i}
+E_{\color{pink}\mu}[u_i^2] - (E_{\color{pink}\mu}[u_i])^2 +
+E_{\color{pink}\mu}[v_i^2] - (E_{\color{pink}\mu}[v_i])^2\]
+
  <p>More refined approach:</p>
 
  <ul>
    <li class="fragment">Start with randomly initialized "pseudo-moments" $\color{pink}\mu^{(1)} = \{\color{pink}\mu^{(1)}_{\alpha}\}$.
-   <li class="fragment">Linearize $\color{yellow}\lambda$ around $\color{pink}\mu{(1)}$.
+   <li class="fragment">Linearize $\color{yellow}\lambda$ around $\color{pink}\mu^{(1)}$.
    <li class="fragment">Solve the corresponding SDP to obtain $\color{pink}\mu^{(2)}$
-   <li class="fragment">Linearize $\color{yellow}\lambda$ around $\color{pink}\mu{(2)}$.
+   <li class="fragment">Linearize $\color{yellow}\lambda$ around $\color{pink}\mu^{(2)}$.
    <li class="fragment">Solve the corresponding SDP to obtain $\color{pink}\mu^{(3)}$
    <li class="fragment">$\cdots$
 </ul>
@@ -319,8 +323,8 @@ E_{\color{pink}\mu}[v_i^2] - (E_{\color{pink}\mu}[v_i])^2\] to our objective.</d
 
 <!-- Example from github -->
 <section>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8VXckZWe-VQ?controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6ThKwE0B9yA?controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8VXckZWe-VQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6ThKwE0B9yA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </section>
 
 <!-- CUBE -->
